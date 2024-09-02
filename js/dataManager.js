@@ -1,3 +1,4 @@
+import { TOKEN_API } from "../config.js";
 let peliculas = null
 let totalPages = 0;
 
@@ -5,7 +6,7 @@ const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDdjYzUyNTdiZmZmYjc2N2NhYTYxNTRlNDNhY2Y0OSIsIm5iZiI6MTcyNTI1OTIzOS4xMjM5MjMsInN1YiI6IjY1NWE2NDRhZDRmZTA0MDBjNDI0NzY1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u9jfPIb7qZbqtq1siZvYtdkMZUGrVkwTa4zQBWRcj5w'
+      Authorization: TOKEN_API
     }
   };
   
