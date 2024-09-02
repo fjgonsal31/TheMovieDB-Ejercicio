@@ -1,4 +1,5 @@
 import { tokenApi } from "../conf.js";
+import { page } from "./main.js";
 
 const options = {
   method: "GET",
@@ -11,10 +12,10 @@ const options = {
 let movies = null;
 let totalPages = null;
 
-export async function loadMovies() {
+export async function loadMovies(pageLoaded) {
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?language=es-ES&page=1",
+      "https://api.themoviedb.org/3/movie/now_playing?language=es-ES&page="+page+"",
       options
     );
 
@@ -26,7 +27,7 @@ export async function loadMovies() {
 
     movies = data.results;
     totalPages = data.total_pages;
-    console.log(movies);
+    // totalPages = 3;
   } catch (error) {
     console.log(error);
   }

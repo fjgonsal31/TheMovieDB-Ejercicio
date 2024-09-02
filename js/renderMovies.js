@@ -13,7 +13,9 @@ export function renderMovies() {
                     <img class="poster" src="${urlImg}${movie.backdrop_path}"/>
                     <h3>${movie.title}</h3>
                     <div class="pelicula-texto">
-                        <p class="voteAverage">${movie.vote_average.toFixed(1)}⭐</p>
+                        <p class="voteAverage">${movie.vote_average.toFixed(
+                          1
+                        )}⭐</p>
                         <a class="verMas" data-id="${movie.id}">Ver más</a>
                     </div>
                 </div>
@@ -34,5 +36,28 @@ export function renderMovies() {
 
 function showMore(event) {
   const idMovie = event.target.getAttribute("data-id");
-  alert("ID de la película: " + idMovie);
+  const movies = getMovies();
+  const movie = movies.find((movie) => String(movie.id) === idMovie);
+  const detailsMovie = `
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detalle ${movie.title}</title>
+    </head>
+    <body>
+        <div class="detalles-pelicula">
+          <h1>${movie.title} (${movie.id})</h1>
+          <img src="${urlImg}${movie.backdrop_path}" alt="${movie.title}">
+          <p>${movie.release_date}<br>${movie.overview}</p>
+      </div>
+    </body>
+    </html>
+  `;
+
+  const blob = new Blob([detailsMovie], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  window.open(url, "_blank");
 }
