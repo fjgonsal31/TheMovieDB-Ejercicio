@@ -1,12 +1,12 @@
-import { showLoading, hideLoading } from "./loadingManager.js";
-import { cargarPeliculasAsync } from "./dataManager.js";
-import { displayPeliculas } from "./renderPeliculas.js";
+import { showLoading, hideLoading } from "./loading.js";
+import { loadMovies } from "./data.js";
+import { renderMovies } from "./renderMovies.js";
 
-async function mostrarPeliculas(){
-  showLoading()
-  await cargarPeliculasAsync()
-  displayPeliculas()
-  hideLoading()
+async function showMovies() {
+  showLoading();
+  await loadMovies();
+  renderMovies();
+  hideLoading();
 }
 
-mostrarPeliculas()
+showMovies();
